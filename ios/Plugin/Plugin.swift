@@ -107,6 +107,10 @@ public class MsAuthPlugin: CAPPlugin {
 
         do {
             let accounts = try context.allAccounts()
+            guard !accounts.isEmpty else {
+                call.resolve()
+                return
+            }
             var completed = 0
             
             accounts.forEach {
